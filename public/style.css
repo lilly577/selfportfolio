@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: black;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: grey;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #08e94b;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+nav a.active, nav a:hover {
+    color: #00ff88;
+}
+
+section {
+    padding: 100px 50px;
+    min-height: 100vh;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.home-img img {
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.home-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.home-content h1 span {
+    color: #00ff88;
+}
+
+.typing-text {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.typing-text span::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.social-icons a {
+    color: #333;
+    font-size: 24px;
+    margin: 10px 15px 10px 0;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #00ff88;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #00ff88;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #00cc66;
+}
+
+.about-content, .services-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content ul {
+    display: inline-block;
+    text-align: left;
+}
+
+.services-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service-box {
+    background: rgb(56, 55, 55);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact input, .contact textarea {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+}
+
+.about {
+    text-align: center;
+}
