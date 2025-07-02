@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Typing animation for home page
+    // Typing animation (optional — only for homepage if needed)
     if (document.querySelector('.typing-text')) {
         const typingText = document.querySelector('.typing-text span');
         const words = ['Web Designer', 'Front-end Developer', 'UI/UX Enthusiast'];
@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function type() {
             const currentWord = words[wordIndex];
-            const currentText = isDeleting 
+            const currentText = isDeleting
                 ? currentWord.substring(0, charIndex - 1)
                 : currentWord.substring(0, charIndex + 1);
-            
+
             typingText.textContent = currentText;
 
             if (!isDeleting && charIndex < currentWord.length) {
@@ -33,41 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // Contact form submission
+    // Contact form submission feedback (for Formspree)
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                message: formData.get('message')
-            };
+        contactForm.addEventListener('submit', (e) => {
+            const formMessage = document.getElementById('form-message');
+            formMessage.textContent = 'Sending...';
+            formMessage.style.color = 'black';
 
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const formMessage = document.getElementById('form-message');
-                if (response.ok) {
-                    formMessage.textContent = 'Message sent successfully!';
-                    formMessage.style.color = 'green';
-                    contactForm.reset();
-                } else {
-                    formMessage.textContent = 'Failed to send message. Please try again.';
-                    formMessage.style.color = 'red';
-                }
-            } catch (error) {
-                const formMessage = document.getElementById('form-message');
-                formMessage.textContent = 'An error occurred. Please try again later.';
-                formMessage.style.color = 'red';
-            }
+            // Wait a bit and show confirmation after formspree redirect
+            setTimeout(() => {
+                formMessage.textContent = 'Message sent! Thank you for reaching out.';
+                formMessage.style.color = 'green';
+                contactForm.reset();
+            }, 1500);
         });
     }
 });
